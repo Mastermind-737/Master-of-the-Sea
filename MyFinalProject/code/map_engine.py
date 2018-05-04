@@ -1,5 +1,5 @@
 import pygame
-from textures import*
+from textures import *
 
 class Map_Engine:
 
@@ -39,8 +39,8 @@ class Map_Engine:
         terrain = pygame.Surface(map_size, pygame.HWSURFACE)
 
         for tile in tiles:
-            if tile[1] in Tiles.Texture_Tags:
-                Map_Engine.add_tile(Tiles.Texture_Tags[tile[1]], tile[0], terrain)
+            if tile[1] in Tiles.Texture_Defs:
+                Map_Engine.add_tile(Tiles.Texture_Defs[tile[1]], tile[0], terrain)
 
 
 
