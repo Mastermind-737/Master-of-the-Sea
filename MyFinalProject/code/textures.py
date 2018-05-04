@@ -14,4 +14,6 @@ class Tiles:
     Grass = load_Texture("MyFinalProject\\Graphics\\World_Assets\\grass.png", size)
     Stone = load_Texture("MyFinalProject\\Graphics\\World_Assets\\stone_brick.jpg", size)
     Water = load_Texture("MyFinalProject\\Graphics\\World_Assets\\water.jpg", size)
-    Texture_Defs = {"1" : Grass, "2" : Stone, "3" : Water}
+    Sand = load_Texture("MyFinalProject\\Graphics\\World_Assets\\sand.jpg", size)
+    Wood = load_Texture("MyFinalProject\\Graphics\\World_Assets\\wood.jpg", size)
+    Texture_Defs = {"1" : Grass, "2" : Stone, "3" : Water, "4" : Sand, "5" : Wood}
