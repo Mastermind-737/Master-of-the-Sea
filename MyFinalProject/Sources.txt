@@ -1,0 +1,9 @@
+Meloonatic Melons
+Build for Python 3
+Designed for PyGame
+Version 1.2
+
+http://www.meloonaticmessage.btck.co.uk
+---------------------------------------------------------------------------------------------------------
+Really Cool Spritesheet Generator:
+http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/ 

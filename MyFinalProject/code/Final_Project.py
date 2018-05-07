@@ -1,4 +1,4 @@
-#imports pygame library and modules
+# Imports pygame library and modules
 import pygame, sys, time
 from UltraColor import *
 from textures import *
@@ -11,9 +11,9 @@ cFrame = 0
 FPS = 0
 c_speed = 1
 
-terrain = Map_Engine.load_map("MyFinalProject\\maps\\world.map")
+terrain = Map_Engine.load_map("MyFinalProject\\maps\\awesome castle.map")
 
-#font for the fps counter
+# Font for the fps counter
 fps_font = pygame.font.Font("C:\\Windows\\Fonts\\Verdana.ttf", 20)
 
 sky = pygame.image.load("MyFinalProject\\Graphics\\World_Assets\\sky.png")
@@ -21,12 +21,12 @@ Sky = pygame.Surface(sky.get_size(), pygame.HWSURFACE)
 Sky.blit(sky, (0, 0))
 del sky
 
-#position of fps text on window screen
+# Position of fps text on window screen
 def show_fps():
     fps_overlay = fps_font.render(str(FPS), True, Color.Goldenrod)
     window.blit(fps_overlay, (0,0))
 
-#creates window and title of window
+# Creates window and title of window
 def create_window():
     global window, window_height, window_width, window_title
     window_width, window_height = 800, 600
@@ -34,7 +34,7 @@ def create_window():
     pygame.display.set_caption(window_title)
     window = pygame.display.set_mode((window_width, window_height), pygame.HWSURFACE|pygame.DOUBLEBUF)
 
-#counts the frames per second
+# Counts the frames per second
 def count_fps():
     global cSec, cFrame, FPS
 
@@ -47,11 +47,12 @@ def count_fps():
 
 
 
-#creates the window
+# Creates the window
 create_window()
 
 isRunning = True
-#Loop for movment camera
+
+# Loop for movment camera
 while isRunning:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -68,7 +69,7 @@ while isRunning:
         elif event.type == pygame.KEYUP:
             Globals.camera_move = 0
 
-#Camera movment logic
+# Camera movment logic
     if Globals.camera_move == 1:
         Globals.camera_y += c_speed
     elif Globals.camera_move == 2:
@@ -81,18 +82,16 @@ while isRunning:
 
     window.blit(Sky, (0, 0))
 
+    # Rendering Terrain Grid
     window.blit(terrain, (Globals.camera_x, Globals.camera_y))
 
-    #Rendering Terrain Grid
-    
-   
-    #shows the fps on screen
+    # Shows the fps on screen
     show_fps()
     
-    #updates the window
+    # Updates the window
     pygame.display.update()
 
-    #Counts fps
+    # Counts fps
     count_fps()
     
 pygame.quit()
