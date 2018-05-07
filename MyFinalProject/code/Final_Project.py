@@ -10,7 +10,7 @@ cSec = 0
 cFrame = 0
 FPS = 0
 c_speed = 1
-
+###
 terrain = Map_Engine.load_map("MyFinalProject\\maps\\awesome castle.map")
 
 # Font for the fps counter
