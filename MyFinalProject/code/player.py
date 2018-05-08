@@ -3,7 +3,7 @@ from NPC import *
 
 pygame.init()
 
-class player:
+class Player:
     def ___init__(self,name):
         self.name = name
         self.facing = "south"

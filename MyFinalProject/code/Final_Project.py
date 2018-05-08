@@ -12,7 +12,7 @@ cSec = 0
 cFrame = 0
 FPS = 0
 c_speed = 1
-###
+
 terrain = Map_Engine.load_map("MyFinalProject\\maps\\cooc.map")
 
 # Font for the fps counter
@@ -99,7 +99,7 @@ while isRunning:
     window.blit(terrain, (Globals.camera_x, Globals.camera_y))
 
     #Render's Player 'Felix'
-    player.render(window, (window_width / 2 - player_w / 2, window_height / 2 - player_h / 2)
+    player.render(window, (window_width / 2 - player_w / 2, window_height / 2 - player_h / 2))
 
 
     # Shows the fps on screen
