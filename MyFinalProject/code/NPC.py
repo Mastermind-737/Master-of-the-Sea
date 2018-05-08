@@ -22,7 +22,7 @@ def get_faces(sprite):
     faces["east"] = east
 
     east = pygame.Surface(tile_size, pygame.HWSURFACE|pygame.SRCALPHA)
-    east.blit(sprite, (0,0), tile_size[1], tile_size[0], tile_size[1]))
+    east.blit(sprite, (0,0), (tile_size[1], tile_size[0], tile_size[1]))
     faces["west"] = west
 
     return faces
