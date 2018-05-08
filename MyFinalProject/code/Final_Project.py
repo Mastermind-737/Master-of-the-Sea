@@ -4,6 +4,8 @@ from UltraColor import *
 from textures import *
 from globe import *
 from map_engine import*
+from NPC import *
+from player import * 
 pygame.init()
 
 cSec = 0
@@ -50,6 +52,14 @@ def count_fps():
 # Creates the window
 create_window()
 
+player = Player("Felix")
+
+player_w, player_h = player.width, player.height
+player_x = (window_width / 2 - player_w / 2 - Globals.camera_x) / Tiles.size
+player_y = (window_height / 2 - player_h / 2 - Globals.camera_y) / Tiles.size
+
+
+
 isRunning = True
 
 # Loop for movment camera
@@ -79,11 +89,17 @@ while isRunning:
     elif Globals.camera_move == 4:
         Globals.camera_x -= c_speed
 
-
+    player_x = (window_width / 2 - player_w / 2 - Globals.camera_x) / Tiles.size
+    player_y = (window_height / 2 - player_h / 2 - Globals.camera_y) / Tiles.size
+    
+    # Render Sky
     window.blit(Sky, (0, 0))
 
     # Rendering Terrain Grid
     window.blit(terrain, (Globals.camera_x, Globals.camera_y))
+
+    #Render's Player 'Felix'
+    player.render(window,(window_width / 2 - player_w / 2, window_height / 2 - player_h / 2)
 
     # Shows the fps on screen
     show_fps()
