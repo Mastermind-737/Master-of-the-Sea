@@ -10,7 +10,7 @@ def get_faces(sprite):
     tile_size = (int(size[0]/2), int(size[1]/2))
 
     south = pygame.Surface(tile_size, pygame.HWSURFACE|pygame.SRCALPHA)
-    south.blit(sprite, (0,0), (0,0 tile_size[0], tile_size[1]))
+    south.blit(sprite, (0,0), (0, tile_size[0], tile_size[1]))
     faces["south"] = south
 
     north = pygame.Surface(tile_size, pygame.HWSURFACE|pygame.SRCALPHA)
