@@ -4,7 +4,7 @@ from NPC import *
 pygame.init()
 
 class Player:
-    def ___init__(self,name):
+    def __init__(self, name):
         self.name = name
         self.facing = "south"
         self.health = 100

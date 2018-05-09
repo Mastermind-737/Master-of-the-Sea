@@ -1,5 +1,7 @@
 # Imports pygame library and modules
-import pygame, sys, time
+import sys
+import time
+import pygame
 from UltraColor import *
 from textures import *
 from globe import *
