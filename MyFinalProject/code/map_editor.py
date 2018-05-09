@@ -4,6 +4,25 @@ import pygame
 from UltraColor import Color
 from textures import Tiles
 
+window_width = Tiles.size * 30
+window_height = Tiles.size * 20
+
+x_menu = int((int(window_width / Tiles.size) - 6) / 2) * Tiles.size
+y_menu = (int(window_height / Tiles.size) - 1) * Tiles.size
+
+window = pygame.display.set_mode((window_width, window_height), pygame.HWSURFACE)
+pygame.display.set_caption("Map Editor")
+clock = pygame.time.Clock()
+
+def draw_tile(x, y, tile_type):
+    window.blit(Tiles.Texture_Defs[tile_type], (x, y))
+
+def draw_tiles_menu():
+    x_pos = x_menu
+    for tile_type in Tiles.Texture_Defs:
+        draw_tile(x_pos, y_menu, tile_type)
+        x_pos = x_pos + Tiles.size
+
 def export_map(file):
     map_data = ""
 
@@ -57,11 +76,6 @@ def import_map(file):
 
         tiles[tiles.index(tile)] = [pos[0], pos[1], tile[1]]   # Save to tile list
     return tiles
-
-
-window = pygame.display.set_mode((700, 720), pygame.HWSURFACE)
-pygame.display.set_caption("Map Editor")
-clock = pygame.time.Clock()
 
 
 txt_font = pygame.font.Font("C:\\Windows\\Fonts\\Verdana.ttf", 20)
@@ -138,33 +152,39 @@ while isRunning:
             mouse_y = math.floor(mouse_pos[1] / Tiles.size) * Tiles.size
 
         if event.type == pygame.MOUSEBUTTONDOWN:
-            tile = [mouse_x - camera_x, mouse_y - camera_y, brush]   # Keep this as a list
-
-            # Is a tile already placed here?
-            found = False
-            for t in tile_data:
-                if t[0] == tile[0] and t[1] == tile[1]:
-                    found = True
-                    break
-
-            # If this tile space is empty
-            if not found:
-                if not brush == "r":
-                    tile_data.append(tile)
-
-            # If this tile space is not empty
+            if mouse_y == y_menu and mouse_x >= x_menu and mouse_x <= x_menu + 6 * Tiles.size:
+                # Clicked on menu
+                brush = str(int((mouse_x - x_menu) / Tiles.size))
+                if brush == '0':
+                    brush = 'r'
             else:
-                # Are we using the rubber tool?
-                if brush == "r":
-                    # Remove Tile
-                    for t in tile_data:
-                        if t[0] == tile[0] and t[1] == tile[1]:
-                            tile_data.remove(t)
-                            print("Tile Removed!")
+                tile = [mouse_x - camera_x, mouse_y - camera_y, brush]   # Keep this as a list
 
+                # Is a tile already placed here?
+                found = False
+                for t in tile_data:
+                    if t[0] == tile[0] and t[1] == tile[1]:
+                        found = True
+                        break
+
+                # If this tile space is empty
+                if not found:
+                    if not brush == "r":
+                        tile_data.append(tile)
+
+                # If this tile space is not empty
                 else:
-                    # Sorry! A tile is already placed here!
-                    print("A tile is already placed here!")
+                    # Are we using the rubber tool?
+                    if brush == "r":
+                        # Remove Tile
+                        for t in tile_data:
+                            if t[0] == tile[0] and t[1] == tile[1]:
+                                tile_data.remove(t)
+                                print("Tile Removed!")
+
+                    else:
+                        # Sorry! A tile is already placed here!
+                        print("A tile is already placed here!")
                             
 
 
@@ -193,6 +213,7 @@ while isRunning:
         except:
             pass
 
+    draw_tiles_menu()
 
     # Draw Tile Highlighter (Selector)
     window.blit(selector, (mouse_x, mouse_y))

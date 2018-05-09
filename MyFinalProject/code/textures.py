@@ -11,9 +11,10 @@ class Tiles:
         surface.blit(bitmap,(0,0))
         return surface
 #loads graphics for game
+    Delete = load_Texture("MyFinalProject\\Graphics\\World_Assets\\delete.png", size)
     Grass = load_Texture("MyFinalProject\\Graphics\\World_Assets\\grass.png", size)
     Stone = load_Texture("MyFinalProject\\Graphics\\World_Assets\\stone_brick.jpg", size)
     Water = load_Texture("MyFinalProject\\Graphics\\World_Assets\\water.jpg", size)
     Sand = load_Texture("MyFinalProject\\Graphics\\World_Assets\\sand.jpg", size)
     Wood = load_Texture("MyFinalProject\\Graphics\\World_Assets\\wood.jpg", size)
-    Texture_Defs = {"1" : Grass, "2" : Stone, "3" : Water, "4" : Sand, "5" : Wood}
+    Texture_Defs = {"0" : Delete, "1" : Grass, "2" : Stone, "3" : Water, "4" : Sand, "5" : Wood}
