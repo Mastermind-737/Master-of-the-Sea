@@ -15,7 +15,7 @@ cFrame = 0
 FPS = 0
 c_speed = 1
 
-terrain = Map_Engine.load_map("MyFinalProject\\maps\\cooc.map")
+terrain = Map_Engine.load_map("MyFinalProject\\maps\\main.map")
 
 # Font for the fps counter
 fps_font = pygame.font.Font("C:\\Windows\\Fonts\\Verdana.ttf", 20)
