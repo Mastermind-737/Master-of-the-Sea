@@ -13,9 +13,9 @@ pygame.init()
 cSec = 0
 cFrame = 0
 FPS = 0
-c_speed = 1
+c_speed = .75
 
-terrain = Map_Engine.load_map("MyFinalProject\\maps\\main.map")
+terrain = Map_Engine.load_map("MyFinalProject\\maps\\world.map")
 
 # Font for the fps counter
 fps_font = pygame.font.Font("C:\\Windows\\Fonts\\Verdana.ttf", 20)
@@ -72,12 +72,16 @@ while isRunning:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
                 Globals.camera_move = 1
+                player.facing = "north"
             elif event.key == pygame.K_s:
                 Globals.camera_move = 2
+                player.facing = "south"
             elif event.key == pygame.K_a:
                 Globals.camera_move = 3
+                player.facing = "east"
             elif event.key == pygame.K_d:
                 Globals.camera_move = 4
+                player.facing = "west"
         elif event.type == pygame.KEYUP:
             Globals.camera_move = 0
 

@@ -1,22 +1,25 @@
+#Importing Libraries/Modules
 import sys
 import math
 import pygame
 from UltraColor import Color
 from textures import Tiles
 
+# Size of the window
 window_width = Tiles.size * 30
 window_height = Tiles.size * 20
-
+# Menu Size
 x_menu = int((int(window_width / Tiles.size) - 6) / 2) * Tiles.size
 y_menu = (int(window_height / Tiles.size) - 1) * Tiles.size
 
 window = pygame.display.set_mode((window_width, window_height), pygame.HWSURFACE)
 pygame.display.set_caption("Map Editor")
 clock = pygame.time.Clock()
-
+# Drawing Tile
 def draw_tile(x, y, tile_type):
     window.blit(Tiles.Texture_Defs[tile_type], (x, y))
 
+# Drawing Menu
 def draw_tiles_menu():
     x_pos = x_menu
     for tile_type in Tiles.Texture_Defs:
@@ -94,13 +97,13 @@ camera_move = 0
 
 brush = "5"
 
-map_width = 1 * Tiles.size
-map_height = 1 * Tiles.size
+map_width = 100 * Tiles.size
+map_height = 100 * Tiles.size
 
 # Initialize Default Map
 for x in range(0, map_width, Tiles.size):
     for y in range(0, map_height, Tiles.size):
-        tile_data.append([x, y, "1"])
+        tile_data.append([x, y, "3"])
 
 isRunning = True
 
@@ -203,7 +206,7 @@ while isRunning:
 
     # RENDER GRAPHICS
 
-    window.fill(Color.Blue)
+    window.fill(Color.Blue) 
 
 
     # Draw Map
