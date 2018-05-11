@@ -1,6 +1,7 @@
 # Imports pygame library and modules
 import sys
 import time
+import math
 import pygame
 from UltraColor import *
 from textures import *
@@ -40,7 +41,7 @@ def create_window():
 
 # Counts the frames per second
 def count_fps():
-    global cSec, cFrame, FPS
+    global cSec, cFrame, FPS, deltatime
 
     if cSec == time.strftime("%S"):
         cFrame += 1
@@ -48,6 +49,8 @@ def count_fps():
         FPS = cFrame
         cFrame = 0
         cSec = time.strftime("%S")
+        if FPS > 0:
+            deltatime = 1 / FPS
 
 
 
@@ -87,13 +90,17 @@ while isRunning:
 
 # Camera movment logic
     if Globals.camera_move == 1:
-        Globals.camera_y += c_speed
+        if not Tiles.Blocked_At ((round, (player_x), math.floor(player_y))):
+            Globals.camera_y += 300 * deltatime
     elif Globals.camera_move == 2:
-        Globals.camera_y -= c_speed
+        if not Tiles.Blocked_At ((round, (player_x), math.ceil(player_y))):
+            Globals.camera_y -= 300 *deltatime
     elif Globals.camera_move == 3:
-        Globals.camera_x += c_speed
+        if not Tiles.Blocked_At ((math.floor, (player_x), round(player_y))):
+            Globals.camera_x += 300 * deltatime
     elif Globals.camera_move == 4:
-        Globals.camera_x -= c_speed
+        if not Tiles.Blocked_At ((math.ceil, (player_x), round(player_y))):
+            Globals.camera_x -= 300 * deltatime
 
     player_x = (window_width / 2 - player_w / 2 - Globals.camera_x) / Tiles.size
     player_y = (window_height / 2 - player_h / 2 - Globals.camera_y) / Tiles.size
@@ -105,7 +112,7 @@ while isRunning:
     window.blit(terrain, (Globals.camera_x, Globals.camera_y))
 
     #Render's Player 'Felix'
-    player.render(window, (window_width / 2 - player_w / 2, window_height / 2 - player_h / 2))
+    player.render(window, (window_width / 2 - player_w / 4, window_height / 2 - player_h / 4))
 
 
     # Shows the fps on screen

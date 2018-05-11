@@ -1,9 +1,22 @@
 import pygame
 pygame.init()
 
+
 #places graphics on screen in 32,32 squares
 class Tiles:
+    
     size = 32
+    
+    Blocked = []
+
+    Blocked_types = ["3","2","5"]
+
+    def Blocked_At(pos):
+        if list(pos) in Tiles.Blocked:
+            return True
+        else:
+            return False
+
     def load_Texture(file,size):
         bitmap = pygame.image.load(file)
         bitmap = pygame.transform.scale(bitmap,(size, size))
