@@ -1,6 +1,5 @@
 #Importing Libraries/Modules
-import sys
-import math
+import sys, math
 import pygame
 from UltraColor import Color
 from textures import Tiles

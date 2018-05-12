@@ -1,4 +1,4 @@
 class Globals:
-    camera_x = 0
-    camera_y = 0
+    camera_x = 20
+    camera_y = 20
     camera_move = 0

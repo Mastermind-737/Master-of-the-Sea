@@ -1,5 +1,4 @@
 import pygame
-pygame.init()
 
 
 #places graphics on screen in 32,32 squares
