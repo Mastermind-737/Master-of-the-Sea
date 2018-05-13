@@ -3,7 +3,7 @@ import sys, time, math
 import pygame
 from UltraColor import *
 from textures import *
-from globe import *
+from globals import Globals
 from map_engine import*
 from player import * 
 pygame.init()
@@ -11,7 +11,7 @@ pygame.init()
 cSec = 0
 cFrame = 0
 FPS = 0
-c_speed = .75dddd
+c_speed = .75
 
 terrain = Map_Engine.load_map("MyFinalProject\\maps\\world.map")
 
