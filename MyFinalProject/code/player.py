@@ -1,3 +1,4 @@
+# Imports pygame
 import pygame
 
 def get_faces(sprite):

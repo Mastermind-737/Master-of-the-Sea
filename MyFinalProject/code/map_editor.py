@@ -2,7 +2,7 @@
 import sys, math
 import pygame
 from UltraColor import Color
-from textures import Tiles
+from tiles import Tiles
 
 # Size of the window
 window_width = Tiles.size * 30
