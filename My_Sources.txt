@@ -3,7 +3,11 @@ Build for Python 3
 Designed for PyGame
 Version 1.2
 
+Webpage:
 http://www.meloonaticmessage.btck.co.uk
+
+Youtube Channel:
+https://www.youtube.com/playlist?list=PL_lFlMpDYWjGRtfO8dawgZUvMdcmtKRoV
 ---------------------------------------------------------------------------------------------------------
 Really Cool Spritesheet Generator:
-http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/ 
+http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/  
