@@ -11,8 +11,8 @@ pygame.init()
 CAMERA_SPEED = 300
 
 # Camera Coordinates
-CAMERA_X = -400
-CAMERA_Y = -400
+CAMERA_X = 400
+CAMERA_Y = 400
 
 WORLD = Map_Loader.load_map("MyFinalProject\\maps\\world.map")
 
@@ -94,16 +94,16 @@ while isRunning:
 # Camera movement logic
     if camera_move == 1:
         if not Tiles.Blocked_At ((round, (player_x), math.floor(player_y))):
-            CAMERA_Y += CAMERA_SPEED * deltatime
+            CAMERA_Y -= CAMERA_SPEED * deltatime
     elif camera_move == 2:
         if not Tiles.Blocked_At ((round, (player_x), math.ceil(player_y))):
-            CAMERA_Y -= CAMERA_SPEED * deltatime
+            CAMERA_Y += CAMERA_SPEED * deltatime
     elif camera_move == 3:
         if not Tiles.Blocked_At ((math.floor, (player_x), round(player_y))):
-            CAMERA_X += CAMERA_SPEED * deltatime
+            CAMERA_X -= CAMERA_SPEED * deltatime
     elif camera_move == 4:
         if not Tiles.Blocked_At ((math.ceil, (player_x), round(player_y))):
-            CAMERA_X -= CAMERA_SPEED * deltatime
+            CAMERA_X += CAMERA_SPEED * deltatime
 
     player_x = (window_width / 2 - player_w / 2 - CAMERA_X) / Tiles.size
     player_y = (window_height / 2 - player_h / 2 - CAMERA_Y) / Tiles.size
@@ -112,7 +112,7 @@ while isRunning:
     window.blit(SKY, (0, 0))
 
     # Rendering Terrain Grid
-    window.blit(WORLD, (CAMERA_X, CAMERA_Y))
+    window.blit(WORLD, (-CAMERA_X, -CAMERA_Y))
 
     #Render's Player 'Felix'
     player.render(window, (window_width / 2 - player_w / 4, window_height / 2 - player_h / 4))
