@@ -33,8 +33,8 @@ class Player:
         self.facing = "south"
         sprite = pygame.image.load("MyFinalProject\\Graphics\\Character_Assets\\playerdemo.png")
         size = sprite.get_size()
-        self.width = size[0]
-        self.height = size[1]
+        self.width = size[0] / 2
+        self.height = size[1] / 2
 
         #Get player faces (front,back,left,right)
         self.faces = get_faces(sprite)

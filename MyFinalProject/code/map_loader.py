@@ -12,27 +12,36 @@ class Map_Loader:
             map_data = mapfile.read()
 
         # Read Map Data
-        map_data = map_data.split("-")   # Split into list of tiles
-
-        map_size = map_data[len(map_data) - 1]   # Get map dimensions
+        # Split into list of tiles
+        map_data = map_data.split("-")   
+        
+        # Get map dimensions
+        map_size = map_data[len(map_data) - 1]   
         map_data.remove(map_size)
         map_size = map_size.split(",")
-        map_size[0] = int(map_size[0]) * Tiles.size
-        map_size[1] = int(map_size[1]) * Tiles.size
+        tiles_horizontal = int(map_size[0])
+        tiles_vertical = int(map_size[1])
+        map_size[0] = tiles_horizontal * Tiles.size
+        map_size[1] = tiles_vertical * Tiles.size
 
         tiles = []
+        tiles_array = [[0 for x in range(tiles_horizontal)] for y in range(tiles_vertical)] 
 
         for tile in range(len(map_data)):
             map_data[tile] = map_data[tile].replace("\n", "")
-            tiles.append(map_data[tile].split(":"))   # Split pos from texture
+            # Split pos from texture
+            tiles.append(map_data[tile].split(":"))
 
         for tile in tiles:
-            tile[0] = tile[0].split(",")   # Split pos into list
+            # Split pos into list
+            tile[0] = tile[0].split(",")
             pos = tile[0]
             for p in pos:
-                pos[pos.index(p)] = int(p)   # Convert to integer
-
-            tiles[tiles.index(tile)] = (pos, tile[1])   # Save to tile list
+                # Convert to integer
+                pos[pos.index(p)] = int(p)
+            # Save to tile list
+            tiles[tiles.index(tile)] = (pos, tile[1])
+            tiles_array[pos[0]][pos[1]] = tile[1]
 
 
         # Create Terrain
@@ -44,4 +53,4 @@ class Map_Loader:
 
 
 
-        return terrain
+        return terrain, tiles_array

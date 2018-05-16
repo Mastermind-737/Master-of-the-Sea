@@ -14,7 +14,7 @@ CAMERA_SPEED = 300
 CAMERA_X = 400
 CAMERA_Y = 400
 
-WORLD = Map_Loader.load_map("MyFinalProject\\maps\\world.map")
+WORLD, TILES = Map_Loader.load_map("MyFinalProject\\maps\\world.map")
 
 # Font for the fps counter
 FPS_FONT = pygame.font.Font("C:\\Windows\\Fonts\\Verdana.ttf", 20)
@@ -62,9 +62,6 @@ create_window()
 player = Player("Felix")
 
 player_w, player_h = player.width, player.height
-player_x = (window_width / 2 - player_w / 2 - CAMERA_X) / Tiles.size
-player_y = (window_height / 2 - player_h / 2 - CAMERA_Y) / Tiles.size
-
 
 isRunning = True
 camera_move = 0
@@ -91,23 +88,25 @@ while isRunning:
         elif event.type == pygame.KEYUP:
             camera_move = 0
 
-# Camera movement logic
+    camera_x_tmp = CAMERA_X
+    camera_y_tmp = CAMERA_Y
+    # Camera movement logic
     if camera_move == 1:
-        if not Tiles.Blocked_At ((round, (player_x), math.floor(player_y))):
-            CAMERA_Y -= CAMERA_SPEED * deltatime
+        camera_y_tmp -= CAMERA_SPEED * deltatime
     elif camera_move == 2:
-        if not Tiles.Blocked_At ((round, (player_x), math.ceil(player_y))):
-            CAMERA_Y += CAMERA_SPEED * deltatime
+        camera_y_tmp += CAMERA_SPEED * deltatime
     elif camera_move == 3:
-        if not Tiles.Blocked_At ((math.floor, (player_x), round(player_y))):
-            CAMERA_X -= CAMERA_SPEED * deltatime
+        camera_x_tmp -= CAMERA_SPEED * deltatime
     elif camera_move == 4:
-        if not Tiles.Blocked_At ((math.ceil, (player_x), round(player_y))):
-            CAMERA_X += CAMERA_SPEED * deltatime
+        camera_x_tmp += CAMERA_SPEED * deltatime
 
-    player_x = (window_width / 2 - player_w / 2 - CAMERA_X) / Tiles.size
-    player_y = (window_height / 2 - player_h / 2 - CAMERA_Y) / Tiles.size
+    player_x_new = int((camera_x_tmp + window_width / 2 - player_w / 2) / Tiles.size)
+    player_y_new = int((camera_y_tmp + window_height / 2 - player_h / 2) / Tiles.size)
     
+    if not Tiles.is_blocked(TILES[player_x_new][player_y_new]):
+        CAMERA_X = camera_x_tmp
+        CAMERA_Y = camera_y_tmp
+
     # Render Sky
     window.blit(SKY, (0, 0))
 
@@ -115,7 +114,7 @@ while isRunning:
     window.blit(WORLD, (-CAMERA_X, -CAMERA_Y))
 
     #Render's Player 'Felix'
-    player.render(window, (window_width / 2 - player_w / 4, window_height / 2 - player_h / 4))
+    player.render(window, (window_width / 2 - player_w / 2, window_height / 2 - player_h / 2))
 
     # Shows the fps on screen
     show_fps()

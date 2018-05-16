@@ -106,7 +106,7 @@ for x in range(0, map_width, Tiles.size):
 
 isRunning = True
 
-
+# Map Editor Main Loop
 while isRunning:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

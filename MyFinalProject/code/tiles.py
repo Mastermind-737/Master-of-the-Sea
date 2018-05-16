@@ -1,20 +1,13 @@
 import pygame
 
 
-#places graphics on screen in 32,32 squares
+# Places graphics on screen in 32,32 squares
 class Tiles:
     
     size = 32
-    
-    Blocked = []
 
-    Blocked_types = ["3","2","5"]
-
-    def Blocked_At(pos):
-        if list(pos) in Tiles.Blocked:
-            return True
-        else:
-            return False
+    def is_blocked(tile_type):
+        return tile_type in ["2", "3", "5"]
 
     def load_Texture(file,size):
         bitmap = pygame.image.load(file)
@@ -22,7 +15,7 @@ class Tiles:
         surface = pygame.Surface((size,size), pygame.HWSURFACE|pygame.SRCALPHA)
         surface.blit(bitmap,(0,0))
         return surface
-#loads graphics for game
+    # Loads graphics for game
     Delete = load_Texture("MyFinalProject\\Graphics\\World_Assets\\delete.png", size)
     Grass = load_Texture("MyFinalProject\\Graphics\\World_Assets\\grass.png", size)
     Stone = load_Texture("MyFinalProject\\Graphics\\World_Assets\\stone_brick.jpg", size)
