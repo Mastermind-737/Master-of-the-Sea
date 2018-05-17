@@ -1,20 +1,23 @@
 import pygame
 
 
-# Places graphics on screen in 32,32 squares
+# Functions that manage the tiles
 class Tiles:
     
     size = 32
-
+    
+    # Defines the blocked tiles
     def is_blocked(tile_type):
         return tile_type in ["2", "3", "5"]
 
+    # Loads an image from disk and creates a surface. "Used for drawing".
     def load_Texture(file,size):
         bitmap = pygame.image.load(file)
         bitmap = pygame.transform.scale(bitmap,(size, size))
         surface = pygame.Surface((size,size), pygame.HWSURFACE|pygame.SRCALPHA)
         surface.blit(bitmap,(0,0))
         return surface
+
     # Loads graphics for game
     Delete = load_Texture("MyFinalProject\\Graphics\\World_Assets\\delete.png", size)
     Grass = load_Texture("MyFinalProject\\Graphics\\World_Assets\\grass.png", size)

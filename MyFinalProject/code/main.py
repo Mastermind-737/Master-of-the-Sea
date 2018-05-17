@@ -87,22 +87,28 @@ while isRunning:
                 player.facing = "west"
         elif event.type == pygame.KEYUP:
             camera_move = 0
-
+    # Temporary Camera with new pos
     camera_x_tmp = CAMERA_X
     camera_y_tmp = CAMERA_Y
+    # Collision Box Offset
+    offset_x = 0
+    offset_y = 0
     # Camera movement logic
     if camera_move == 1:
         camera_y_tmp -= CAMERA_SPEED * deltatime
     elif camera_move == 2:
         camera_y_tmp += CAMERA_SPEED * deltatime
+        offset_y = 1
     elif camera_move == 3:
         camera_x_tmp -= CAMERA_SPEED * deltatime
     elif camera_move == 4:
         camera_x_tmp += CAMERA_SPEED * deltatime
-
-    player_x_new = int((camera_x_tmp + window_width / 2 - player_w / 2) / Tiles.size)
-    player_y_new = int((camera_y_tmp + window_height / 2 - player_h / 2) / Tiles.size)
+        offset_x = 1
+    # New Player Coordinates
+    player_x_new = offset_x + int((camera_x_tmp + window_width / 2 - player_w / 2) / Tiles.size)
+    player_y_new = offset_y + int((camera_y_tmp + window_height / 2 - player_h / 2) / Tiles.size)
     
+    # Only moves camera if no collision with blocked tile
     if not Tiles.is_blocked(TILES[player_x_new][player_y_new]):
         CAMERA_X = camera_x_tmp
         CAMERA_Y = camera_y_tmp
@@ -110,7 +116,7 @@ while isRunning:
     # Render Sky
     window.blit(SKY, (0, 0))
 
-    # Rendering Terrain Grid
+    # Rendering Terrain Gridds
     window.blit(WORLD, (-CAMERA_X, -CAMERA_Y))
 
     #Render's Player 'Felix'
@@ -124,6 +130,7 @@ while isRunning:
 
     # Counts fps
     count_fps()
-    
+
+# Quits Pygame
 pygame.quit()
 sys.exit()
