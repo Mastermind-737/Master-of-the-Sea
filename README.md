@@ -11,6 +11,8 @@ Milestone 4: Created a map editor where I can create and modify .map files. Also
 
 Milestone 5: Added Player on screen with different sprites for each key pressed.
 
+Milestone 6: Yes, finally added collisions.
+
 Obstacle 1: Low frame rate because of image sizes.
 
 Obstacle 2: .map files were corrupt because of an algorithm error which took some time to discover.
@@ -19,3 +21,4 @@ Obstacle 3: Map Editor took a while in properly writing the .map files in an unc
 
 Obstacle 4: Making menu for the map editor and trying to figure out how to properly implement it without placing tiles when clicking on menu and so on.
 
+Obstacle 5: Making collisions is difficult because using tiles not pixels.
